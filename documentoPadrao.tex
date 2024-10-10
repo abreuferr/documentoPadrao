@@ -1,12 +1,20 @@
 \documentclass[a4paper,12pt]{report}
 \usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel} % Pacote para português do Brasil
 \usepackage{graphicx}
-\usepackage{fancyhdr}
-\usepackage{background}
+\usepackage{background} % Pacote para marca d'agua
 \usepackage{indentfirst}
 \usepackage{hyperref}
+\usepackage[a4paper, left=2cm, right=2cm]{geometry}
+\usepackage[most]{tcolorbox}
+\usepackage{float}
+\usepackage{lipsum} % Gerador de lero-lero
+\usepackage{geometry}
 
-% Configuração da marca d'água
+% Configurando margens
+\geometry{top=1.5cm,bottom=1.5cm,left=2.0cm,right=2.0cm}
+
+% Configuração da marca d'água centralizada
 \backgroundsetup{
   scale=1.5, % Ajusta o tamanho da imagem
   color=black,
@@ -18,16 +26,10 @@
   contents={\includegraphics[width=8cm]{img/logo.png}} % Logo centralizado com 8 cm de largura
 }
 
-% Configurações de página
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{\leftmark}
-\fancyfoot[C]{\thepage}
-
 % Capa
 \title{Título do Documento}
 \author{Nome do Autor}
-\date{\today}
+\date{\today} % Exibe a data atual por extenso em português
 
 \begin{document}
 
@@ -36,13 +38,15 @@
 \newpage
 
 % Resumo Executivo
-\begin{abstract}
-Este é o resumo executivo do documento. Aqui você descreve brevemente os principais pontos abordados, destacando os objetivos, metodologia e conclusões.
-\end{abstract}
+\chapter*{Resumo Executivo}
+\addcontentsline{toc}{chapter}{Resumo Executivo}
+\lipsum[1-2] % Texto de exemplo (remova e adicione seu texto)
+
 \newpage
 
 % Sumário
 \tableofcontents
+
 \newpage
 
 % Primeira Seção
@@ -50,12 +54,27 @@ Este é o resumo executivo do documento. Aqui você descreve brevemente os princ
 Este é o primeiro capítulo do documento. Aqui você pode descrever a introdução ao tema que será abordado.
 
 % Subsessão 1
-\section{Subtópico 1}
-Aqui você pode expandir sobre o tópico com mais detalhes.
+\section{Unix Command}
+O comando abaixo irá exibir a cadeia de certificados entre o senhasegura Cofre e a Microsoft.
+
+\begin{tcolorbox}[width=\textwidth, enhanced, breakable]
+	{\scriptsize
+		\begin{verbatim}
+		$ openssl s_client -showcerts -servername login.microsoftonline.com -connect login.microsoftonline.com:443
+		\end{verbatim}
+	}
+\end{tcolorbox}
 
 % Subsessão 2
-\section{Subtópico 2}
-Nesta seção, você pode discutir outra parte importante do tópico.
+\section{Imagem}
+A Figura \ref{fig:openbsd} mostra bla-bla-bla.\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.10]{img/openbsd.png}
+	\caption{Funcionamento da chamada de sistema do Sistema Operacional}
+	\label{fig:openbsd}
+\end{figure}
 
 % Segunda Seção
 \chapter{Desenvolvimento}
@@ -66,8 +85,25 @@ Neste capítulo, você pode descrever o desenvolvimento detalhado do assunto tra
 Este é um exemplo de subtópico dentro do capítulo de desenvolvimento.
 
 \newpage
+
 % Conclusão
 \chapter{Conclusão}
 Aqui você apresenta a conclusão do seu documento, resumindo as ideias principais e os resultados alcançados.
+
+\newpage
+
+% Copyleft (sem numeração de capítulo)
+\chapter*{} % Capítulo vazio para remover cabeçalho
+\vspace*{\fill}
+\begin{flushright}
+	\underline{\textit{Propósito deste documento}}\\
+	Conceitos de criptografia\bigskip
+
+	\underline{\textit{Versão}}\\
+	Versão 1.0\bigskip
+
+	\underline{\textit{Autor}}\\
+	Caio Abreu Ferreira [\href{mailto:abreuferr@gmail.com}{abreuferr@gmail.com}] \bigskip\\
+\end{flushright}
 
 \end{document}
