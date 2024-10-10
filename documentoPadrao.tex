@@ -1,0 +1,73 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{background}
+\usepackage{indentfirst}
+\usepackage{hyperref}
+
+% Configuração da marca d'água
+\backgroundsetup{
+  scale=1.5, % Ajusta o tamanho da imagem
+  color=black,
+  opacity=0.1,
+  angle=0,
+  position=current page.center, % Posiciona a imagem no centro da página
+  vshift=0cm, % Ajuste vertical para o centro
+  hshift=0cm, % Ajuste horizontal para o centro
+  contents={\includegraphics[width=8cm]{img/logo.png}} % Logo centralizado com 8 cm de largura
+}
+
+% Configurações de página
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\leftmark}
+\fancyfoot[C]{\thepage}
+
+% Capa
+\title{Título do Documento}
+\author{Nome do Autor}
+\date{\today}
+
+\begin{document}
+
+% Capa
+\maketitle
+\newpage
+
+% Resumo Executivo
+\begin{abstract}
+Este é o resumo executivo do documento. Aqui você descreve brevemente os principais pontos abordados, destacando os objetivos, metodologia e conclusões.
+\end{abstract}
+\newpage
+
+% Sumário
+\tableofcontents
+\newpage
+
+% Primeira Seção
+\chapter{Introdução}
+Este é o primeiro capítulo do documento. Aqui você pode descrever a introdução ao tema que será abordado.
+
+% Subsessão 1
+\section{Subtópico 1}
+Aqui você pode expandir sobre o tópico com mais detalhes.
+
+% Subsessão 2
+\section{Subtópico 2}
+Nesta seção, você pode discutir outra parte importante do tópico.
+
+% Segunda Seção
+\chapter{Desenvolvimento}
+Neste capítulo, você pode descrever o desenvolvimento detalhado do assunto tratado no documento.
+
+% Subsessão 1
+\section{Subtópico 1 do Desenvolvimento}
+Este é um exemplo de subtópico dentro do capítulo de desenvolvimento.
+
+\newpage
+% Conclusão
+\chapter{Conclusão}
+Aqui você apresenta a conclusão do seu documento, resumindo as ideias principais e os resultados alcançados.
+
+\end{document}
