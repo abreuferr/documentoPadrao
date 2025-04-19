@@ -1,53 +1,87 @@
 \documentclass[a4paper,12pt]{report}
-\usepackage[utf8]{inputenc}
-\usepackage[brazil]{babel} % Pacote para português do Brasil
-\usepackage{graphicx}
-\usepackage{background} % Pacote para marca d'agua
-\usepackage{indentfirst}
-\usepackage{hyperref}
-\usepackage[a4paper, left=2cm, right=2cm]{geometry}
-\usepackage[most]{tcolorbox}
-\usepackage{float}
-\usepackage{lipsum} % Gerador de lero-lero
-\usepackage{geometry}
 
-% Configurando margens
-\geometry{top=1.5cm,bottom=1.5cm,left=2.0cm,right=2.0cm}
+% Pacotes de idioma e codificação
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}  % Adicionado para melhor suporte a acentuação
+\usepackage[brazil]{babel}
+
+% Configuração de página e margens
+\usepackage[a4paper, top=1.5cm, bottom=1.5cm, left=2cm, right=2cm]{geometry}
+
+% Pacotes gráficos e de design
+\usepackage{graphicx}
+\usepackage{background}
+\usepackage{float}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}  % Adicionado para mais opções de cores
+
+% Pacotes de funcionalidade
+\usepackage{indentfirst}
+\usepackage{booktabs}  % Adicionado para tabelas mais bonitas
+\usepackage{enumitem}  % Adicionado para listas personalizáveis
+\usepackage{lipsum}
+\usepackage{microtype}  % Adicionado para melhor tipografia
+
+% Pacote para quebrar linhas longas em verbatim
+\usepackage{fvextra}  % Estende o pacote fancyvrb para melhor controle de verbatim
+\DefineVerbatimEnvironment{Verbatim}{Verbatim}{breaklines=true, breakanywhere=true, fontsize=\scriptsize}
+
+% Configuração dos hyperlinks - carregar por último para evitar conflitos
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+    pdftitle={Título do Documento},
+    pdfauthor={Nome do Autor},
+    pdfsubject={Assunto do Documento},
+    pdfkeywords={LaTeX, documentação, relatório}
+}
 
 % Configuração da marca d'água centralizada
 \backgroundsetup{
-  scale=1.5, % Ajusta o tamanho da imagem
+  scale=1.5,
   color=black,
   opacity=0.1,
   angle=0,
-  position=current page.center, % Posiciona a imagem no centro da página
-  vshift=0cm, % Ajuste vertical para o centro
-  hshift=0cm, % Ajuste horizontal para o centro
-  contents={\includegraphics[width=8cm]{img/logo.png}} % Logo centralizado com 8 cm de largura
+  position=current page.center,
+  contents={\includegraphics[width=8cm]{img/logo.png}}
 }
 
-% Capa
-\title{Título do Documento}
-\author{Nome do Autor}
-\date{\today} % Exibe a data atual por extenso em português
+% Estilo personalizado para tcolorbox
+\tcbset{
+    enhanced,
+    breakable,
+    colback=gray!10,
+    colframe=gray!40,
+    arc=2mm,
+    boxrule=0.5pt,
+    fonttitle=\bfseries
+}
+
+% Informações do documento
+\title{\Huge{\textbf{Título do Documento}}}
+\author{\Large{Nome do Autor}}
+\date{\Large{\today}}
 
 \begin{document}
 
 % Capa
-\maketitle
-\newpage
+\begin{titlepage}
+    \maketitle
+    \thispagestyle{empty} % Remove numeração na capa
+\end{titlepage}
 
 % Resumo Executivo
 \chapter*{Resumo Executivo}
 \addcontentsline{toc}{chapter}{Resumo Executivo}
-\lipsum[1-2] % Texto de exemplo (remova e adicione seu texto)
-
-\newpage
+\lipsum[1-2]
+\clearpage
 
 % Sumário
 \tableofcontents
-
-\newpage
+\clearpage
 
 % Primeira Seção
 \chapter{Introdução}
@@ -55,25 +89,23 @@ Este é o primeiro capítulo do documento. Aqui você pode descrever a introduç
 
 % Subsessão 1
 \section{Unix Command}
-O comando abaixo irá exibir a cadeia de certificados entre o senhasegura Cofre e a Microsoft.
+O comando abaixo é utilizado para instalar as dependecias no GNU/Linux Debian.
 
-\begin{tcolorbox}[width=\textwidth, enhanced, breakable]
-	{\scriptsize
-		\begin{verbatim}
-		$ openssl s_client -showcerts -servername login.microsoftonline.com -connect login.microsoftonline.com:443
-		\end{verbatim}
-	}
+\begin{tcolorbox}[title=Comando OpenSSL]
+\begin{Verbatim}
+$ sudo apt install libjbig0 libtiff5 fontconfig-config libfontconfig1 libwxbase3.0-0v5 libpcsclite1 libccid pcscd opensc libengine-pkcs11-openssl gnupg-pkcs11-scd gnupg2
+\end{Verbatim}
 \end{tcolorbox}
 
 % Subsessão 2
 \section{Imagem}
-A Figura \ref{fig:openbsd} mostra bla-bla-bla.\\
+A Figura \ref{fig:openbsd} mostra bla-bla-bla.
 
 \begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.10]{img/openbsd.png}
-	\caption{Funcionamento da chamada de sistema do Sistema Operacional}
-	\label{fig:openbsd}
+    \centering
+    \includegraphics[scale=0.10]{img/openbsd.png}
+    \caption{Funcionamento da chamada de sistema do Sistema Operacional}
+    \label{fig:openbsd}
 \end{figure}
 
 % Segunda Seção
@@ -84,26 +116,28 @@ Neste capítulo, você pode descrever o desenvolvimento detalhado do assunto tra
 \section{Subtópico 1 do Desenvolvimento}
 Este é um exemplo de subtópico dentro do capítulo de desenvolvimento.
 
-\newpage
+\clearpage
 
 % Conclusão
 \chapter{Conclusão}
 Aqui você apresenta a conclusão do seu documento, resumindo as ideias principais e os resultados alcançados.
 
-\newpage
+\clearpage
 
 % Copyleft (sem numeração de capítulo)
-\chapter*{} % Capítulo vazio para remover cabeçalho
+\chapter*{}
 \vspace*{\fill}
 \begin{flushright}
-	\underline{\textit{Propósito deste documento}}\\
-	Conceitos de criptografia\bigskip
-
-	\underline{\textit{Versão}}\\
-	Versão 1.0\bigskip
-
-	\underline{\textit{Autor}}\\
-	Caio Abreu Ferreira [\href{mailto:abreuferr@gmail.com}{abreuferr@gmail.com}] \bigskip\\
+    \begin{tabular}{l}
+    \textbf{\underline{Propósito deste documento}} \\
+    Conceitos de criptografia \\
+    \\
+    \textbf{\underline{Versão}} \\
+    Versão 1.0 \\
+    \\
+    \textbf{\underline{Autor}} \\
+    Caio Abreu Ferreira [\href{mailto:abreuferr@gmail.com}{abreuferr@gmail.com}] \\
+    \end{tabular}
 \end{flushright}
 
 \end{document}
