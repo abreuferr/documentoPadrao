@@ -67,11 +67,14 @@
 
 \begin{document}
 
+\pagenumbering{roman} % Capa e pré-textual em algarismos romanos, evita colidir com a página 1 arábica do Cap. 1
+
 % Capa
 \begin{titlepage}
     \maketitle
     \thispagestyle{empty} % Remove numeração na capa
 \end{titlepage}
+\setcounter{page}{2} % \end{titlepage} sempre reseta para 1 (classes oneside); evita colidir com a capa
 
 % Resumo Executivo
 \chapter*{Resumo Executivo}
@@ -83,13 +86,15 @@
 \tableofcontents
 \clearpage
 
+\pagenumbering{arabic}
+
 % Primeira Seção
 \chapter{Introdução}
 Este é o primeiro capítulo do documento. Aqui você pode descrever a introdução ao tema que será abordado.
 
 % Subsessão 1
 \section{Unix Command}
-O comando abaixo é utilizado para instalar as dependecias no GNU/Linux Debian.
+O comando abaixo é utilizado para instalar as dependências no GNU/Linux Debian.
 
 \begin{tcolorbox}[title=Comando OpenSSL]
 \begin{Verbatim}
