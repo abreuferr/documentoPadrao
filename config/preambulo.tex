@@ -1,0 +1,64 @@
+% Pacotes de idioma e codificação
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}  % Adicionado para melhor suporte a acentuação
+\usepackage[brazil]{babel}
+
+% Configuração de página e margens
+\usepackage[a4paper, top=1.5cm, bottom=1.5cm, left=2cm, right=2cm]{geometry}
+
+% Pacotes gráficos e de design
+\usepackage{graphicx}
+\usepackage{background}
+\usepackage{float}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}  % Adicionado para mais opções de cores
+
+% Pacotes de funcionalidade
+\usepackage{indentfirst}
+\usepackage{booktabs}  % Adicionado para tabelas mais bonitas
+\usepackage{enumitem}  % Adicionado para listas personalizáveis
+\usepackage{lipsum}
+\usepackage{microtype}  % Adicionado para melhor tipografia
+
+% Pacote para quebrar linhas longas em verbatim
+\usepackage{fvextra}  % Estende o pacote fancyvrb para melhor controle de verbatim
+\DefineVerbatimEnvironment{Verbatim}{Verbatim}{breaklines=true, breakanywhere=true, fontsize=\scriptsize}
+
+% Configuração dos hyperlinks - carregar por último para evitar conflitos
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+    pdftitle={Título do Documento},
+    pdfauthor={Nome do Autor},
+    pdfsubject={Assunto do Documento},
+    pdfkeywords={LaTeX, documentação, relatório}
+}
+
+% Configuração da marca d'água centralizada
+\backgroundsetup{
+  scale=1.5,
+  color=black,
+  opacity=0.1,
+  angle=0,
+  position=current page.center,
+  contents={\includegraphics[width=8cm]{img/logo.png}}
+}
+
+% Estilo personalizado para tcolorbox
+\tcbset{
+    enhanced,
+    breakable,
+    colback=gray!10,
+    colframe=gray!40,
+    arc=2mm,
+    boxrule=0.5pt,
+    fonttitle=\bfseries
+}
+
+% Informações do documento
+\title{\Huge{\textbf{Título do Documento}}}
+\author{\Large{Nome do Autor}}
+\date{\Large{\today}}

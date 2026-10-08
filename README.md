@@ -5,15 +5,20 @@ Modelo (template) de documento LaTeX em português, baseado na classe `report`: 
 ## Compilar
 
 ```
-latexmk -pdf documentoPadrao.tex
+latexmk main.tex
 ```
+
+O PDF sai em `build/main.pdf` (configurado em `latexmkrc`).
 
 Requer os pacotes TeX Live: `background`, `tcolorbox` (opção `most`), `fvextra`, `microtype`, `booktabs`, `enumitem`, `lipsum`.
 
 ## Estrutura
 
-- `documentoPadrao.tex` — arquivo principal do modelo (preâmbulo + conteúdo de exemplo, a ser substituído a cada novo documento).
+- `main.tex` — documento raiz: capa, sumário e `\input` do preâmbulo e dos capítulos.
+- `config/preambulo.tex` — pacotes, hyperlinks, marca d'água e estilos.
+- `capitulos/` — um `.tex` por capítulo (conteúdo de exemplo, a ser substituído a cada novo documento).
 - `img/` — imagens usadas no documento (logo para marca d'água, figuras de exemplo).
+- `build/` — saída da compilação (fora do git).
 
 # Agenda
 

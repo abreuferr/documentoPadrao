@@ -1,0 +1,33 @@
+\documentclass[a4paper,12pt]{report}
+
+% Preâmbulo: pacotes, hyperlinks, marca d'água e estilos em config/preambulo.tex
+\input{config/preambulo}
+
+\begin{document}
+
+\pagenumbering{roman} % Capa e pré-textual em algarismos romanos, evita colidir com a página 1 arábica do Cap. 1
+
+% Capa
+\begin{titlepage}
+    \maketitle
+    \thispagestyle{empty} % Remove numeração na capa
+\end{titlepage}
+\setcounter{page}{2} % \end{titlepage} sempre reseta para 1 (classes oneside); evita colidir com a capa
+
+\input{capitulos/00-resumo}
+
+% Sumário
+\tableofcontents
+\clearpage
+
+\pagenumbering{arabic}
+
+\input{capitulos/01-introducao}
+
+\input{capitulos/02-desenvolvimento}
+
+\input{capitulos/03-conclusao}
+
+\input{capitulos/99-colofao}
+
+\end{document}
