@@ -7,3 +7,4 @@ build/
 *.fdb_latexmk
 *.synctex.gz
 main.pdf
+.claude/settings.local.json
